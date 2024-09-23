@@ -60,7 +60,14 @@ journalRouter.get('/get-all-stories', authenticateToken, async(req, res) => {
 })
 
 journalRouter.post('/image-upload', uplaod.single('image'), async(req, res) => {
-
+  try {
+    if(!req.file){
+      return res.status(400).json({ message: 'Please provide an image.' })
+    }
+    const imageUrl = `http://`
+  } catch (error) {
+    
+  }
 })
 
 module.exports = journalRouter;
