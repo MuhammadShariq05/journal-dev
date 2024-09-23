@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const userRoute = require("./user");
-const travelRoute = require("./travel");
+const journalRoute = require("./journal");
 
 const router = express.Router();
 
@@ -11,6 +11,6 @@ router.use(express.json());
 // User routes
 router.use("/user", userRoute);
 // Add Travel story
-router.use("/addTravelStory", travelRoute);
+router.use("/story", journalRoute);
 
 module.exports = router;
