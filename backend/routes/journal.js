@@ -212,8 +212,6 @@ journalRouter.delete("/delete-image", async (req, res) => {
   }
 });
 
-// Search Travel
-
 // Serve static files from the uploads and assets directory
 journalRouter.use("/uploads",express.static(path.join(__dirname, "../uploads")));
 journalRouter.use("/assets", express.static(path.join(__dirname, "../assets")));
