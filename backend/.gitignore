@@ -3,3 +3,4 @@ node_modules/
 
 # Secrect
 .env
+config.json
