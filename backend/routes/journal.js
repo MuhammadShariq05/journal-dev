@@ -57,7 +57,6 @@ journalRouter.post("/add-story", authenticateToken, async (req, res) => {
 // Get Story
 journalRouter.get("/get-all-stories", authenticateToken, async (req, res) => {
   const { userId } = req.user;
-
   try {
     const getAllStories = await JournalStory.find({ userId: userId }).sort({
       isFavorite: -1,
