@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { ProfileInfo } from "./Cards/ProfileInfo";
 import { useNavigate } from "react-router-dom";
+import SearchBar from "./Input/SearchBar";
 
-const Navbar = ({ userInfo, count }) => {
+const Navbar = ({ userInfo, count, searchQuery, setSearchQuery,onSearchNote, handleClearSearch }) => {
   const isToken = localStorage.getItem("token");
   const navigate = useNavigate();
   const onLogout = () => {
@@ -10,8 +11,17 @@ const Navbar = ({ userInfo, count }) => {
     navigate("/login");
   };
 
-  // nor of stories
-  
+  const handleSearch = (e) => {
+    if(searchQuery){
+      onSearchNote(searchQuery)
+    }
+  };
+
+  const onClearSearch = () => {
+    handleClearSearch();
+    setSearchQuery("")
+  };
+
   return (
     <>
       <nav className="bg-white flex items-center justify-between px-6 py-2 drop-shadow sticky top-0 z-10">
@@ -21,7 +31,25 @@ const Navbar = ({ userInfo, count }) => {
           </h1>
         </div>
         <div className="flex items-center flex-shrink-0 mx-6">
-          {isToken && <ProfileInfo userInfo={userInfo} onLogout={onLogout} count={count}/>}
+          {isToken && (
+            <>
+              <div className="w-full max-w-lg">
+                <SearchBar
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  handleSearch={handleSearch}
+                  onClearSearch={onClearSearch}
+                />
+              </div>
+              <div className="ml-6">
+                <ProfileInfo
+                  userInfo={userInfo}
+                  onLogout={onLogout}
+                  count={count}
+                />
+              </div>
+            </>
+          )}
         </div>
       </nav>
     </>

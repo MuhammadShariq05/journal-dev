@@ -77,7 +77,7 @@ journalRouter.put("/edit-story/:id",  authenticateToken, async(req, res) => {
   const { userId } = req.user;
 
   // validate required fields
-  if (!title || !story || !visitedLocation || !imageUrl || !visitedDate) {
+  if (!title || !story || !visitedLocation || !visitedDate) {
     return res
       .status(400)
       .json({ message: "Please provide all required fields." });
@@ -176,7 +176,7 @@ journalRouter.post("/image-upload",upload.single("image"),
         return res.status(400).json({ message: "Please provide an image." });
       }
       const imageUrl = `http://localhost:3000/api/v1/story/uploads/${req.file.filename}`;
-      res.status(201).json({ imageUrl });
+      res.status(200).json({ imageUrl });
     } catch (error) {
       res.status().json({ error: true, message: error.message });
     }

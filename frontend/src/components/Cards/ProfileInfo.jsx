@@ -35,24 +35,40 @@ export const ProfileInfo = ({ userInfo, onLogout, count }) => {
     userInfo && (
       <div className="relative flex ">
         <button
-          className="px-3 py-2 text-white bg-cyan-600 rounded-full hover:bg-cyan-500"
+          className="w-[45px] h-[45px] px-3 py-2 text-white bg-cyan-600 rounded-full hover:bg-cyan-500 shadow-lg"
           onClick={handleToggle}
         >
           {getInitials(userInfo ? userInfo.fullName : "")}
         </button>
 
         {showInfo && (
-          <div className="absolute top-16 right-0 w-72 p-2 bg-slate-300 rounded shadow-lg transition-all ease-in-out">
-            <h4 className="text-lg font-bold mb-2">{userInfo.fullName}</h4>
-            <p className="text-sm">
-              <b>Email:</b> {userInfo.email}
-            </p>
-            <p className="text-sm">
-              <b>Stories Written:</b> {count}
-            </p>
-            <p className="text-sm">
-              <b>Today's Date:</b> {formateDate(new Date(Date.now()))}
-            </p>
+          <div className="absolute top-16 right-0 w-72 p-4 bg-white rounded-lg shadow-sm border border-cyan-100 transition-all ease-in-out">
+            <div className="mb-5">
+              <div className="border-slate-200 mb-2 items-center text-sm font-medium text-cyan-600 hover:underline hover:text-cyan-700 transition">Your Profile</div>
+              <div className="border-t border-slate-200"></div>
+            </div>
+            <h4 className="text-xl font-semibold text-cyan-700 mb-3">
+              {userInfo.fullName}
+            </h4>
+
+            <div className="text-sm text-slate-600 space-y-2">
+              <p>
+                <span className="font-medium text-slate-700">Email:</span>{" "}
+                {userInfo.email}
+              </p>
+              <p>
+                <span className="font-medium text-slate-700">
+                  Stories Written:
+                </span>{" "}
+                {count}
+              </p>
+              <p>
+                <span className="font-medium text-slate-700">
+                  Today's Date:
+                </span>{" "}
+                {formateDate(new Date(Date.now()))}
+              </p>
+            </div>
           </div>
         )}
 

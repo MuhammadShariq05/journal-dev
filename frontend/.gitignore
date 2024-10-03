@@ -13,6 +13,9 @@ dist-ssr
 *.local
 assets
 public
+helper.js
+uploadImage.js
+
 
 # Editor directories and files
 .vscode/*

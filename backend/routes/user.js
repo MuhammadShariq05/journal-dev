@@ -85,7 +85,7 @@ userRouter.post("/login", async (req, res) => {
 });
 
 // Get User
-userRouter.get("/get-user", authenticateToken,async (req, res) => {
+userRouter.get("/get-user", authenticateToken, async (req, res) => {
   const { userId } = req.user;
 
   const isUser = await User.findOne({ _id: userId });

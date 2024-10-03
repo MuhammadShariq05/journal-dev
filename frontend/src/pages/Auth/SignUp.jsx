@@ -66,7 +66,7 @@ const SignUpForm = () => {
         email: email,
         password: password,
       });
-
+      console.log({ fullName: name, email: email, password: password });
       // Hand Successful signup response
       if(response.data && response.data.accessToken){
         localStorage.setItem("token", response.data.accessToken);
